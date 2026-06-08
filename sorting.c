@@ -1,32 +1,33 @@
-#include <stdio.h>
 #include "sorting.h"
 
-/* ==================================================
+/* =====================================
    Utility Function
-   ================================================== */
+   ===================================== */
 
-static void swap(WordFreq *a, WordFreq *b)
+static void swap(WordData *a, WordData *b)
 {
-    WordFreq temp = *a;
+    WordData temp = *a;
     *a = *b;
     *b = temp;
 }
 
-/* ==================================================
+/* =====================================
    INSERTION SORT (Descending)
-   ================================================== */
+   ===================================== */
 
-void insertionSort(WordFreq arr[], int n)
+void insertionSort(WordData arr[], int n)
 {
-    int i, j;
-    WordFreq key;
+    int i;
+    int j;
+    WordData key;
 
     for(i = 1; i < n; i++)
     {
         key = arr[i];
         j = i - 1;
 
-        while(j >= 0 && arr[j].freq < key.freq)
+        while(j >= 0 &&
+              arr[j].freq < key.freq)
         {
             arr[j + 1] = arr[j];
             j--;
@@ -36,16 +37,17 @@ void insertionSort(WordFreq arr[], int n)
     }
 }
 
-/* ==================================================
+/* =====================================
    QUICK SORT (Descending)
-   ================================================== */
+   ===================================== */
 
-static int partition(WordFreq arr[], int low, int high)
+static int partition(WordData arr[],
+                     int low,
+                     int high)
 {
     long long pivot = arr[high].freq;
 
     int i = low - 1;
-
     int j;
 
     for(j = low; j < high; j++)
@@ -62,7 +64,9 @@ static int partition(WordFreq arr[], int low, int high)
     return i + 1;
 }
 
-void quickSort(WordFreq arr[], int low, int high)
+void quickSort(WordData arr[],
+               int low,
+               int high)
 {
     if(low < high)
     {
@@ -73,22 +77,32 @@ void quickSort(WordFreq arr[], int low, int high)
     }
 }
 
-/* ==================================================
+/* =====================================
    HEAP SORT (Descending)
-   ================================================== */
+   ===================================== */
 
-static void heapify(WordFreq arr[], int n, int i)
+static void heapify(WordData arr[],
+                    int n,
+                    int i)
 {
     int largest = i;
 
-    int left  = 2 * i + 1;
+    int left = 2 * i + 1;
     int right = 2 * i + 2;
 
-    if(left < n && arr[left].freq > arr[largest].freq)
+    if(left < n &&
+       arr[left].freq >
+       arr[largest].freq)
+    {
         largest = left;
+    }
 
-    if(right < n && arr[right].freq > arr[largest].freq)
+    if(right < n &&
+        arr[right].freq >
+        arr[largest].freq)
+    {
         largest = right;
+    }
 
     if(largest != i)
     {
@@ -98,12 +112,12 @@ static void heapify(WordFreq arr[], int n, int i)
     }
 }
 
-void heapSort(WordFreq arr[], int n)
+void heapSort(WordData arr[], int n)
 {
     int i;
 
     /* Build Max Heap */
-    for(i = n/2 - 1; i >= 0; i--)
+    for(i = n / 2 - 1; i >= 0; i--)
     {
         heapify(arr, n, i);
     }
@@ -116,9 +130,9 @@ void heapSort(WordFreq arr[], int n)
         heapify(arr, i, 0);
     }
 
-    /* Reverse agar descending */
+    /* Reverse supaya descending */
     int start = 0;
-    int end   = n - 1;
+    int end = n - 1;
 
     while(start < end)
     {

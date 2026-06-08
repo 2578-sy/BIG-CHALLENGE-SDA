@@ -3,13 +3,13 @@
 
 #include "data.h"
 
-/* Insertion Sort */
-void insertionSort(WordFreq arr[], int n);
+/* Insertion Sort (descending) */
+void insertionSort(WordData arr[], int n);
 
-/* Quick Sort */
-void quickSort(WordFreq arr[], int low, int high);
+/* Quick Sort (descending) */
+void quickSort(WordData arr[], int low, int high);
 
-/* Heap Sort */
-void heapSort(WordFreq arr[], int n);
+/* Heap Sort (descending) */
+void heapSort(WordData arr[], int n);
 
 #endif

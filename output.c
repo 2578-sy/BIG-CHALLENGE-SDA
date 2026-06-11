@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "output.h"
+#include "data.h"
 
 /* =====================================
    Simpan hasil ke file

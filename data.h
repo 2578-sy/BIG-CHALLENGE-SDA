@@ -13,4 +13,6 @@ typedef struct {
     long long freq;
 } WordData;
 
+extern WordData data[MAX_WORDS];
+
 #endif

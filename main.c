@@ -4,6 +4,7 @@
 #include "file_handler.h"
 #include "sorting.h"
 #include "output.h"
+#include "data.h"
 
 // menampilkan menu
 void menu() {
